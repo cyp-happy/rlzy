@@ -27,9 +27,3 @@ npm run dev
 ```sh
 npm run build
 ```
-# rlzy
-# rlzy
-# rlzy
-# rlzy
-# rlzy
-# rlzy

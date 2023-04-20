@@ -19,8 +19,9 @@
 							<div class="form-group">
 								<label for="gender" class="col-sm-3 col-form-label text-right">性别</label>
 								<select id="gender" v-model="userInfo.gender" class="form-control" required>
-									<option value="male">男</option>
-									<option value="female">女</option>
+									<option v-for="option in Options.genderOptions" :value="option.value">
+										{{ option.text }}
+									</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -128,24 +129,24 @@
 import { reactive } from 'vue';
 import axios from 'axios'
 export default {
-	setup() {
+	setup(props,{emit}) {
 		const userInfo = reactive({
-			username:'',//姓名
-			gender:'',//性别
-			work:'',//岗位植物
-			rank:'',//junxian
-			rankTime:'',//jx时间
-			worktitle:'',//植物等级
-			worktitleTime:'',//植物等级时间
-			birthdate: '',//出生年月
-			worktime: '',//ruwu年月
-			education:'',//文化程度
-			origin:'',//籍贯
-			major:'',//专业
-			majorClass:'',//人才层次
-			majorAA:'',//专业细类
-			train:'',//培训情况
-			workExperience:'',//工作经历
+			username:'1',//姓名
+			gender:'man',//性别
+			work:'1',//岗位植物
+			rank:'A',//junxian
+			rankTime:'2001-01',//jx时间
+			worktitle:'A',//植物等级
+			worktitleTime:'2001-02-02',//植物等级时间
+			birthdate: '2001-03-03',//出生年月
+			worktime: '2001-09',//ruwu年月
+			education:'A',//文化程度
+			origin:'1',//籍贯
+			major:'A',//专业
+			majorClass:'A',//人才层次
+			majorAA:'A',//专业细类
+			train:'1',//培训情况
+			workExperience:'1',//工作经历
 
 		});
 		const Options = {
@@ -153,15 +154,19 @@ export default {
 			{ text: 'A', value: 'A' },
 			{ text: 'B', value: 'B' },
 			{ text: 'C', value: 'C' }
+		],genderOptions:[
+			{ text: '男', value: 'man' },
+			{ text: '女', value: 'woman' }
 		],};
 		const handleSubmit = () => {
 			console.log(userInfo);
 			//将用户信息提交到服务器或者存储到本地
-			axios.post('http://localhost:3000',userInfo).then(response => {
-				console.log(response.data);
-			}).catch(error=>{
+			axios.post('http://192.168.150.57:5000/newapp/addinfo',userInfo).then(response => {
+				console.log(response.data).catch(error=>{
 				console.log(error);
 			});
+			});
+			emit('close');
 		};
         // const closeModal = () => {
 		// 	$emit('close');

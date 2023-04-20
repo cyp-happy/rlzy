@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import AddInfo from '../views/AddInfo1.vue';
+import AddInfo from '../components/AddInfo1.vue';
 const routes = [
   {
-    path: '/newapp/add-info',
+    path: '/newapp/addinfo',
     name: 'AddInfo',
     component: AddInfo,
   },
