@@ -13,8 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
-.idea
-tsconfig.tsbuildinfo
+
 /cypress/videos/
 /cypress/screenshots/
 
